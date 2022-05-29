@@ -22,6 +22,7 @@ pub use tuning::*;
 
 use alloc::vec::Vec;
 use alloc::format;
+use std::convert::TryFrom;
 
 use super::general_midi::GeneralMidi;
 use super::parse_error::*;
@@ -609,6 +610,7 @@ impl UniversalNonRealTimeMsg {
         }
 
         match (m[0], m[1]) {
+            (09, gm) => Ok(UniversalNonRealTimeMsg::GeneralMidi(GeneralMidi::try_from(gm).unwrap())),
             _ => Err(ParseError::Invalid(format!("TODO: UniversalNonRealTimeMsg::(0x{:02x}, 0x{:02x}) not implemented", m[0], m[1]))),
         }
     }

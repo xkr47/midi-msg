@@ -1,7 +1,10 @@
+use num_enum::TryFromPrimitive;
+
 /// Used to turn General MIDI level 1 or 2 on, or turn them off.
 ///
 /// Used in [`UniversalNonRealTimeMsg::GeneralMidi`](crate::UniversalNonRealTimeMsg::GeneralMidi)
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, TryFromPrimitive)]
+#[repr(u8)]
 pub enum GeneralMidi {
     GM1 = 1,
     GM2 = 3,
