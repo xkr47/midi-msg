@@ -12,7 +12,8 @@ license = "MIT"
 keywords = ["midi", "music"]
 
 [dependencies]
-ascii = { git="https://github.com/tomprogrammer/rust-ascii", rev="1a91033", default-features = false, features = ["alloc"], optional = true }
+#ascii = { git="https://github.com/tomprogrammer/rust-ascii", rev="1a91033", default-features = false, features = ["alloc"], optional = true }
+bstr = { version = "0.2", default-features = false, features = [ "std" ], optional = true }
 micromath = "1.1.1"
 
 [dev-dependencies]
@@ -21,4 +22,4 @@ midir = "0.7.0"
 [features]
 default = ["std", "sysex"]
 std = []
-sysex = ["ascii"]
+sysex = ["bstr"]
